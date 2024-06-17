@@ -1,8 +1,8 @@
 const express = require ('express');
 const path = require('path');
-const data = require('./db/db.json');
+const data = require('./Develop/db/db.json');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.port || 3001;
 
 // Middleware: I will be serving the static files from a folder called public
 const clog = (req, res, next) => {
