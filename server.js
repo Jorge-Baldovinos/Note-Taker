@@ -1,8 +1,11 @@
 const express = require ('express');
 const path = require('path');
-const data = require('./Develop/db/db.json');
+const data = require('./db/db.json');
 const app = express();
+const api = require('./routes/index');
 const PORT = process.env.port || 3001;
+// import the feedback router
+
 
 // Middleware: I will be serving the static files from a folder called public
 const clog = (req, res, next) => {
@@ -27,6 +30,7 @@ app.use(clog);
 // Middleware: for parsing application/json and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
+app.use('/api', api);
 
 app.use(express.static('public'));
 
